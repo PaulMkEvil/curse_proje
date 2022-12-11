@@ -8,6 +8,12 @@ import website.entities.User;
 import website.entities.enums.Role;
 import website.repositories.UserRepo;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -19,10 +25,41 @@ public class UserService {
         String username = user.getUsername();
         if (userRepo.findByUsername(username) != null) return false;
         user.setActive(true);
-        user.getRoles().add(Role.ROLE_USER);
+        user.getRoles().add(Role.ROLE_ADMIN);
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
         log.info("Saving new User with username: {}", username);
         userRepo.save(user);
         return true;
+    }
+
+    public List<User> list() {
+        return userRepo.findAll();
+    }
+
+    public void banUser(Long id) {
+        User user = userRepo.findById(id).orElse(null);
+        if (user != null) {
+            if (user.isActive()) {
+                user.setActive(false);
+                log.info("Ban user with id = {}; username: {}", user.getId(), user.getUsername());
+            } else {
+                user.setActive(true);
+                log.info("Unban user with id = {}; username: {}", user.getId(), user.getUsername());
+            }
+        }
+        userRepo.save(user);
+    }
+
+    public void changeUserRoles(User user, Map<String, String> form) {
+        Set<String> roles = Arrays.stream(Role.values())
+                .map(Role::name)
+                .collect(Collectors.toSet());
+        user.getRoles().clear();
+        for (String key : form.keySet()) {
+            if (roles.contains(key)) {
+                user.getRoles().add(Role.valueOf(key));
+            }
+        }
+        userRepo.save(user);
     }
 }

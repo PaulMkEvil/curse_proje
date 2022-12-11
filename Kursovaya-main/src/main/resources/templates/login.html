@@ -6,10 +6,6 @@
 <body>
 <section th:insert="templatesforall :: hero"></section>
 
-<authorize access="isAuthenticated()">
-  <% response.sendRedirect("/"); %>
-</authorize>
-
 <div class="contact-form-area">
   <div class="container">
     <div class="col-lg-10 offset-lg-1">

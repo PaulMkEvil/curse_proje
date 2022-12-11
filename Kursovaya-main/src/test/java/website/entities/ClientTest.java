@@ -37,7 +37,7 @@ class ClientTest {
 
     @Test
     void addUser(){
-        User user = new User("Pavel", "123123", true);
+        User user = new User("alexis", "admin", true);
         userRepo.saveAndFlush(user);
     }
 

@@ -22,11 +22,9 @@
                     <li><a href="historytour">История туров</a></li>
                 <authorize access="!isAuthenticated()">
                     <li><a href="login">Авторизация</a></li>
-                    <li>---</li>
                 </authorize>
                 <authorize access="isAuthenticated()">
                     <li><a href="/logout">Выйти</a></li>
-                    <li th:each="username:${users}">Выйти</li>
                 </authorize>
                     <li><a href="admin">Админ Панель</a></li>
                 </ul>
