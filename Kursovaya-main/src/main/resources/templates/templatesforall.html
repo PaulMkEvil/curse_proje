@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta name="author" content="pixelhint.com">
+    <meta name="description" content="Turism agency"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
+    <link rel="stylesheet" th:href ="@{/css/reset.css}"/>
+    <link rel="stylesheet" th:href ="@{/css/responsive.css}"/>
+    <title>Turism Agency</title>
+</head>
+<body>
+<section class="hero" th:fragment="hero">
+    <header>
+        <div class="wrapper">
+            <a href="home"><h2 class="logo" alt="" titl="">Turism Agency</h2></a>
+            <a href="#" class="hamburger"></a>
+            <nav>
+                <ul>
+<!--                    <li><a href="tours">Покупка</a></li>-->
+                    <li><a href="about">О нас</a></li>
+                    <li><a href="historytour">История туров</a></li>
+                <authorize access="!isAuthenticated()">
+                    <li><a href="login">Авторизация</a></li>
+                </authorize>
+                <authorize access="isAuthenticated()">
+                    <li><a href="/logout">Выйти</a></li>
+                </authorize>
+                    <li><a href="admin">Админ Панель</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header><!--  end header section  -->
+
+    <section class="caption">
+        <h2 class="caption">Find You Dream Trip</h2>
+        <h3 class="properties">Tours - Hotels - Prices</h3>
+    </section>
+</section><!--  end hero section  -->
+
+<footer th:fragment="footer">
+    <div class="wrapper footer">
+        <ul>
+            <li class="links">
+                <ul>
+                    <li><a href="#">New York</a></li>
+                    <li><a href="#">Los Anglos</a></li>
+                    <li><a href="#">Miami</a></li>
+                    <li><a href="#">Washington</a></li>
+                    <li><a href="#">...</a></li>
+                </ul>
+            </li>
+
+            <li class="about">
+                <p>Our agency offers the most beautiful trips around the world</p>
+                <p>Contact us +7 (927)-159-59-09</p>
+                <ul>
+                    <li><a href="#" class="facebook" target="_blank"></a></li>
+                    <li><a href="#" class="twitter" target="_blank"></a></li>
+                    <li><a href="#" class="google" target="_blank"></a></li>
+                    <li><a href="#" class="skype"></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="copyrights wrapper">
+        Copyright © 2022 <a href="https://github.com/PaulMkEvil" target="_blank" class="ph_link" title="Download more free Templates">My GitHub</a>. All Rights Reserved.
+    </div>
+</footer><!--  end footer  -->
+</body>
+</html>

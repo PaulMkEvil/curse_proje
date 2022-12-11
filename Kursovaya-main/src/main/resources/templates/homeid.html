@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+<body>
+<section th:insert="templatesforall :: hero"></section>
+
+<div class="homeid">
+    <div class="shadow-border">
+        <img th:src="${'../img/'+ tour + '.jpg'}" alt="" title="" class="property_img"/>
+    </div>
+    <div class="homeidEl">
+        <div class="formtext">
+            <h1 th:text="${tour.name}"/>
+            <h3 th:text="${tour.description}"/>
+            <h5 th:text="${tour.price + '₽'}"/>
+        </div>
+        <form id="buttonbuy" method="post" action="/buy">
+            <input type="hidden" name="tour_id" th:value="${tour.id}">
+            <button type="submit"> Купить </button>
+        </form>
+    </div>
+</div>
+
+<footer th:insert="templatesforall :: footer"></footer>
+</body>
+</html>

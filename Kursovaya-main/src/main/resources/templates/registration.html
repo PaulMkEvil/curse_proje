@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+</head>
+
+<body>
+<section th:insert="templatesforall :: hero"></section>
+
+<div class="contact-form-area">
+    <div class="container">
+        <div class="col-lg-10 offset-lg-1">
+            <div class="contact-form-warp">
+                <div class="section-title">
+                    <i class="flaticon-026-chicken-1"></i>
+                    <h2>Registration</h2>
+                </div>
+                <!-- contact form -->
+                <form class="contact-form" method="POST" modelAttribute="userForm">
+                    <div>
+                    <div class="col-md-6">
+                        <input type="text" path="username" placeholder="Username"
+                                    autofocus="true"></input>
+                        <errors path="username">${usernameError}</errors>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" path="password" placeholder="Password"></input>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" path="passwordConfirm"
+                                    placeholder="Confirm your password"></input>
+                        <errors path="password">${passwordError}</errors>
+                    </div>
+                    <div class="text-center">
+                    <button type="submit">Зарегистрироваться</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!--  end listing section  -->
+
+<footer th:insert="templatesforall :: footer"></footer>
+
+</body>
+</html>

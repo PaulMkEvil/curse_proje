@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+<body>
+<section th:insert="templatesforall :: hero"></section>
+
+<form method="post">
+    <div class="formbuy0">
+        <h1>Введите ваши данные</h1>
+        <div class="formtext">
+            <input type="text" name = "lastname" placeholder="Фамилия">
+            <input type="text" name = "tel_number" placeholder="Номер телефона">
+        </div>
+        <button type="submit"> Посмотреть туры </button>
+    </div>
+</form>
+<div id="listtours">
+    <h1>Список купленных туров</h1>
+    <ol class="historylist" th:each="tour : ${tours}">
+        <li>
+        <p th:text="${tour.name + ' | ' + tour.description + ' | ' + tour.price + '₽'}"/>
+        </li>
+    </ol>
+</div>
+
+<footer th:insert="templatesforall :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+</head>
+<body>
+  <section th:insert="templatesforall :: hero"></section>
+  <section class="listings">
+    <h1>Выберите тур</h1>
+    <div class="wrapper">
+      <ul class="properties_list">
+        <li th:each="tour:${tours}">
+          <a th:href="${'/home/' + tour.id}">
+            <img th:src="${'img/'+ tour.id +'.jpg'}" alt="" title="" class="property_img"/>
+          </a>
+          <span class="price" th:text="${tour.price + '₽'}"/>
+          <div class="property_details">
+            <h1>
+              <a th:text="${tour.name}"/>
+            </h1>
+            <h2 th:text="${tour.description}"/>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>	<!--  end listing section  -->
+
+  <footer th:insert="templatesforall :: footer"></footer>
+
+</body>
+</html>

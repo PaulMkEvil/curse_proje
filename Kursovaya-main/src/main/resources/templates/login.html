@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+</head>
+
+<body>
+<section th:insert="templatesforall :: hero"></section>
+
+<authorize access="isAuthenticated()">
+  <% response.sendRedirect("/"); %>
+</authorize>
+
+<div class="contact-form-area">
+  <div class="container">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="contact-form-warp">
+        <div class="section-title">
+          <i class="flaticon-026-chicken-1"></i>
+          <h2>Authorization</h2>
+        </div>
+        <!-- contact form -->
+        <form class="contact-form" method="post" action="/login">
+          <div class="rowsender">
+            <div class="col-md-6">
+              <input name="username" type="text" placeholder="Username">
+            </div>
+            <div class="col-md-6">
+              <input name="password" type="password" placeholder="Password">
+            </div>
+            <!--                        <div class="col-md-12">-->
+            <!--                            <textarea placeholder="Message"></textarea>-->
+            <a href="registration" id="register">Register</a>
+            <div class="text-center">
+              <button class="site-btn" type="submit">Authorization</button>
+            </div>
+            <!--                        </div>-->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div><!--  end listing section  -->
+
+<footer th:insert="templatesforall :: footer"></footer>
+
+</body>
+</html>

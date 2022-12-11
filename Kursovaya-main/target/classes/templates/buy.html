@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+<body>
+<section th:insert="templatesforall :: hero"></section>
+
+<form class="buyform" method="post" action="/home">
+    <div class="formbuy">
+        <h1>Введите ваши данные</h1>
+        <div class="formtext">
+            <input type="text" name = "firstname" placeholder="Имя">
+            <input type="text" name = "lastname" placeholder="Фамилия">
+            <input type="text" name = "years" placeholder="Возраст">
+            <input type="text" name = "tel_number" placeholder="Номер телефона">
+        </div>
+    </div>
+    <div class="formbutton">
+        <input type="hidden" name = "tour_id" th:value="${tour.id}">
+        <h1 th:text="${tour.name}"/>
+        <button type="submit"> Купить тур </button>
+    </div>
+</form>
+
+<footer th:insert="templatesforall :: footer"></footer>
+</body>
+</html>
