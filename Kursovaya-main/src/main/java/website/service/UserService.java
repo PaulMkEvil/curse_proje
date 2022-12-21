@@ -26,7 +26,7 @@ public class UserService {
         if (userRepo.findByUsername(username) != null) return false;
         user.setActive(true);
         user.getRoles().add(Role.ROLE_ADMIN);
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         log.info("Saving new User with username: {}", username);
         userRepo.save(user);
         return true;

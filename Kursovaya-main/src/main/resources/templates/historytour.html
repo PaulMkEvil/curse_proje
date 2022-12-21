@@ -19,6 +19,7 @@
     <ol class="historylist" th:each="tour : ${tours}">
         <li>
         <p th:text="${tour.name + ' | ' + tour.description + ' | ' + tour.price + '₽'}"/>
+            <button>Delete</button>
         </li>
     </ol>
 </div>

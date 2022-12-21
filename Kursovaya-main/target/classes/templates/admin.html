@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templatesforall :: head">
+</head>
+
+<body>
+<section th:insert="templatesforall :: hero"></section>
+
+<div>
+  <table class="table user-list">
+    <thead>
+    <tr>
+      <th><span>User</span></th>
+      <th class="text-center"><span>Role</span></th>
+      <th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:id="${user.id}" th:each="user : ${users}">
+      <form method="post">
+        <input type="hidden" th:value="${user.id}" name="id">
+        <td>
+          <a th:href="'users/'+${user.id}" class="user-link" th:text="${user.id}"/>
+        </td>
+        <td class="text-center">
+          <span class="label label-default" th:text="${user.role}"/>
+        </td>
+        <td style="width: 20%;">
+          <button  type="submit" class="table-link danger">
+            <div class="fa-stack">
+              <i class="fa fa-square fa-stack-2x"></i>
+              <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+            </div>
+          </button>
+        </td>
+      </form>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/">Главная</a>
+</div>--  end listing section  -->
+
+<footer th:insert="templatesforall :: footer"></footer>
+
+</body>
+</html>
